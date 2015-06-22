@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MG</title>
+    <style>
+        canvas
+        {
+            display: block;
+            position: absolute;
+            border: 1px solid #000;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        #progress
+        {
+            margin:          0;
+            width:           100px;
+            height:          100px;
+            position: 		 absolute;
+            border: 1px solid #000;
+            top:			 200px;
+            left:			 50px;
+            background: red;
+            opacity : 1;
+        }
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+
+        window.onload = function() {
+            var welcome = document.getElementById("welcome");
+            var click = document.getElementById("click");
+            var progress = document.getElementById("progress");
+            var results = document.getElementById("results");
+            var count = document.getElementById("count");
+            var but = document.getElementById("but");
+
+            var socket = io.connect();
+            socket.on('welcome', function (data) {
+                welcome.innerHTML = "Welcome to the game <strong>" + data.name + "</strong>";
+            });
+            socket.on('update', function (data) {
+                progress.innerHTML = data.currentWidth;
+                progress.style.left = parseInt(data.currentWidth) + "px";
+            });
+            socket.on('usercount', function (data) {
+                count.innerHTML = "Number of Players: " + data.user_count;
+
+            });
+            socket.on('updateUsers', function (data) {
+                click.innerHTML = "Number of your Clicks: " + data.userclick;
+            });
+
+            progress.onclick = function() {
+                socket.emit("click");
+            }
+            but.onclick = function() {
+                socket.emit("get_name" , {username: document.getElementById("Name").value});
+            }
+
+        }
+
+
+    </script>
+</head>
+<body>
+<div id="welcome"></div>
+<hr />
+<div id="count">Number of Players: 0</div>
+<hr />
+<div id="click">Number of your Clicks: 0</div>
+<hr />
+Name:<br>
+<input type="text" id="Name">
+<input type="button" id="but" value="Change Name">
+<br>
+<hr />
+<div id="progress"></div>
+
+</body>
+</html>
