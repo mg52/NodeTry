@@ -39,7 +39,7 @@
             var count = document.getElementById("count");
             var but = document.getElementById("but");
 
-            var socket = io.connect();
+            var socket = io();
             socket.on('welcome', function (data) {
                 welcome.innerHTML = "Welcome to the game <strong>" + data.name + "</strong>";
             });
