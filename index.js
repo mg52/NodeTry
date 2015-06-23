@@ -56,6 +56,9 @@ var removeUser = function(user) {
 var pg = require('pg');
 
 pg.connect(process.env.DATABASE_URL, function(err, client) {
- client.query('CREATE TABLE MUSTAFA (ID INT PRIMARY KEY NOT NULL,AGE INT NOT NULL);');
+ var query = client.query('CREATE TABLE MUSTAFA (ID INT PRIMARY KEY NOT NULL,AGE INT NOT NULL);');
  //client.query('INSERT INTO MUSTAFA (ID,AGE) VALUES (1,27);');
+ query.on('row', function(row) {
+    console.log(JSON.stringify(row));
+  });
 });
