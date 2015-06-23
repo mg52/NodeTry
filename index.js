@@ -53,3 +53,9 @@ var removeUser = function(user) {
     user_count -= 1;
     io.sockets.emit("usercount", { user_count: user_count });
 }
+var pg = require('pg');
+
+pg.connect(process.env.DATABASE_URL, function(err, client) {
+ client.query('CREATE TABLE MUSTAFA (ID INT PRIMARY KEY NOT NULL,AGE INT NOT NULL);');
+ client.query('INSERT INTO MUSTAFA (ID,AGE) VALUES (1,27);');
+});
