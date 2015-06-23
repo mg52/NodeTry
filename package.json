@@ -4,7 +4,6 @@
     "description": "SocketioExample",
     "dependencies": {
         "socket.io": "latest",
-        "pg": "4.x",
         "moniker": "latest"
     },
     "repository": {
