@@ -41,7 +41,7 @@ io.sockets.on('connection', function (socket) {
         user.clicks += 1;
         updateWidth();
         updateUsers();
-        socket.emit("updateUsers",{userclick: user.clicks});
+        socket.emit("updateClicks",{userclick: user.clicks});
     });
     socket.on("get_name", function(data) {
         user.name = data.username;
