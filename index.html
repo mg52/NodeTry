@@ -70,8 +70,10 @@
             }
             }
             else{
-                progress.addEventListener('touchstart', function(e){
-                socket.emit("click")}, false)
+                //progress.addEventListener('touchstart', function(e){
+                //socket.emit("click")}, false);
+                progress.ontouchstart = function() {
+                socket.emit("click");
             }
         }
         function detectmob() { 
