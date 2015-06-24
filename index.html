@@ -65,14 +65,13 @@
             }
                 
             if(detectmob() == 0){
-            progress.onclick = function() {
+                progress.onclick = function() {
                 socket.emit("click");
             }
             }
             else{
-            progress.touchstart = function() {
-                socket.emit("click");
-            }   
+                progress.addEventListener('touchstart', function(e){
+                socket.emit("click")}, false)
             }
         }
         function detectmob() { 
