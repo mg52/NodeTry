@@ -40,7 +40,7 @@ io.sockets.on('connection', function (socket) {
         currentWidth += 1;
         user.clicks += 1;
         updateWidth();
-        updateUsers
+        updateUsers();
         socket.emit("updateUsers",{userclick: user.clicks});
     });
     socket.on("get_name", function(data) {
