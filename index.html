@@ -60,9 +60,6 @@
                 click.innerHTML = "Number of your Clicks: " + data.userclick;
             });
 
-            progress.onclick = function() {
-                socket.emit("click");
-            }
             but.onclick = function() {
                 socket.emit("get_name" , {username: document.getElementById("Name").value});
                 
