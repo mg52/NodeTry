@@ -12,10 +12,11 @@ var Moniker = require('moniker');
 var port = process.env.PORT || 5000;
 app.listen(port);*/
 //////////////////////
-var app = require('express').createServer();
-var io = require('socket.io')(app);
 var Moniker = require('moniker');
 var port = process.env.PORT || 5000;
+
+var app = require('express').createServer();
+var io = require('socket.io')(app);
 app.listen(port);
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
