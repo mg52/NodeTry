@@ -33,6 +33,7 @@ io.sockets.on('connection', function (socket) {
     var user = addUser();
     updateWidth();
     socket.emit("welcome", user);
+    io.sockets.emit("other", user);
     socket.on('disconnect', function () {
         removeUser(user);
     });
@@ -59,7 +60,6 @@ var addUser = function() {
     }
     user_count += 1;
     io.sockets.emit("usercount", { user_count: user_count });
-    socket.broadcast.emit("other", user);
     return user;
 }
 var updateWidth = function() {
