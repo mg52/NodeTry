@@ -51,6 +51,7 @@ io.sockets.on('connection', function (socket) {
 var initialWidth = 50;
 var currentWidth = initialWidth;
 var user_count = 0;
+var users = [];
 
 var addUser = function() {
     var user = {
@@ -59,14 +60,31 @@ var addUser = function() {
     }
     user_count += 1;
     io.sockets.emit("usercount", { user_count: user_count });
+    users.push(user);
+    updateUsers();
     return user;
 }
 var updateWidth = function() {
     io.sockets.emit("update", { currentWidth: currentWidth });
 }
+var updateUsers = function() {
+    var str = '';
+    for(var i=0; i<users.length; i++) {
+        var user = users[i];
+        str += user.name + ' <small>(' + user.clicks + ' clicks)</small>';
+    }
+    io.sockets.emit("users", { users: str });
+}
 var removeUser = function(user) {
     user_count -= 1;
     io.sockets.emit("usercount", { user_count: user_count });
+    for(var i=0; i<users.length; i++) {
+        if(user.name === users[i].name) {
+            users.splice(i, 1);
+            updateUsers();
+            return;
+        }
+    }
 }
 /*var pg = require('pg');
 
