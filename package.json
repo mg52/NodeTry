@@ -4,7 +4,8 @@
     "description": "SocketioExample",
     "dependencies": {
         "socket.io": "latest",
-        "moniker": "latest"
+        "moniker": "latest",
+        "express": "3.x"
     },
     "repository": {
     "type": "git",
