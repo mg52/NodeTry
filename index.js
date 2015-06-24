@@ -26,6 +26,17 @@ app.get('/', function (req, res) {
 */
 /*End of Server Creation with Express*/
 
+/////////////////
+var express = require('express')
+var app = express()
+var Moniker = require('moniker');
+var port = process.env.PORT || 5000;
+app.get('/', function (req, res) {
+  res.send('Hello World')
+})
+app.listen(port)
+/////////////////
+
 console.log('Working!');
 io.sockets.on('connection', function (socket) {
     var user = addUser();
