@@ -11,7 +11,8 @@ var fs = require('fs');
 var Moniker = require('moniker');
 var port = process.env.PORT || 5000;
 app.listen(port);
-//////////////////////
+
+/*Server Creation with Express*/
 /*
 var Moniker = require('moniker');
 var port = process.env.PORT || 5000;
@@ -23,7 +24,7 @@ app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
 });
 */
-//////////////////////////
+/*End of Server Creation with Express*/
 
 console.log('Working!');
 io.sockets.on('connection', function (socket) {
