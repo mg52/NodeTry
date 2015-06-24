@@ -63,12 +63,32 @@
             progress.onclick = function() {
                 socket.emit("click");
             }
+            if(detectmob() == 0){
             but.onclick = function() {
                 socket.emit("get_name" , {username: document.getElementById("Name").value});
             }
-
+            }
+            else{
+            but.touchstart = function() {
+                socket.emit("get_name" , {username: document.getElementById("Name").value});
+            }   
+            }
         }
-
+        function detectmob() { 
+            if( navigator.userAgent.match(/Android/i)
+            || navigator.userAgent.match(/webOS/i)
+            || navigator.userAgent.match(/iPhone/i)
+            || navigator.userAgent.match(/iPad/i)
+            || navigator.userAgent.match(/iPod/i)
+            || navigator.userAgent.match(/BlackBerry/i)
+            || navigator.userAgent.match(/Windows Phone/i)
+            ){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
 
     </script>
 </head>
