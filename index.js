@@ -1,4 +1,4 @@
-var handler = function(req, res) {
+/*var handler = function(req, res) {
     fs.readFile('./index.html', function (err, data) {
         if(err) throw err;
         res.writeHead(200);
@@ -10,8 +10,17 @@ var io = require('socket.io').listen(app);
 var fs = require('fs');
 var Moniker = require('moniker');
 var port = process.env.PORT || 5000;
-
+app.listen(port);*/
+//////////////////////
+var app = require('express').createServer();
+var io = require('socket.io')(app);
+var Moniker = require('moniker');
+var port = process.env.PORT || 5000;
 app.listen(port);
+app.get('/', function (req, res) {
+  res.sendfile(__dirname + '/index.html');
+});
+//////////////////////////
 
 console.log('Working!');
 io.sockets.on('connection', function (socket) {
