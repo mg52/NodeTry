@@ -56,7 +56,7 @@
                 count.innerHTML = "Number of Players: " + data.user_count;
 
             });
-            socket.on('updateUsers', function (data) {
+            socket.on('updateClicks', function (data) {
                 click.innerHTML = "Number of your Clicks: " + data.userclick;
             });
 
