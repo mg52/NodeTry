@@ -36,6 +36,7 @@
             var click = document.getElementById("click");
             var progress = document.getElementById("progress");
             var results = document.getElementById("results");
+            var allUsers  = document.getElementById("users");
             var count = document.getElementById("count");
             var but = document.getElementById("but");
 
@@ -43,6 +44,9 @@
             socket.on('welcome', function (data) {
                 welcome.innerHTML = "Welcome to the game <strong>" + data.name + "</strong>";
                 click.innerHTML = "Number of your Clicks: 0";
+            });
+            socket.on('users', function (data) {
+                allUsers.innerHTML = "<strong>Users:</strong>" + data.users;
             });
             socket.on('update', function (data) {
                 progress.innerHTML = data.currentWidth;
@@ -74,6 +78,8 @@
 <div id="count">Number of Players: </div>
 <hr />
 <div id="click">Number of your Clicks: </div>
+<hr />
+<div id="Users">Users: </div>
 <hr />
 Name:<br>
 <input type="text" id="Name">
