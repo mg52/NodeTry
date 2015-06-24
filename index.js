@@ -59,7 +59,7 @@ var addUser = function() {
     }
     user_count += 1;
     io.sockets.emit("usercount", { user_count: user_count });
-    socket.broadcast.emit("other", user.name);
+    socket.broadcast.emit("other", user);
     return user;
 }
 var updateWidth = function() {
