@@ -29,14 +29,14 @@ app.get('/', function (req, res) {
 /*End of Server Creation with Express*/
 
 /////////////////
-var express = require('express')
-var app = express()
 var Moniker = require('moniker');
 var port = process.env.PORT || 5000;
+var express = require('express');
+var app = express();
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
 });
-app.listen(port)
+app.listen(port);
 /////////////////
 
 console.log('Working!');
