@@ -13,7 +13,7 @@ var port = process.env.PORT || 5000;
 app.listen(port);*/
 //////////////////////
 var app = require('express').createServer();
-var io = require('socket.io').listen(app);
+var io = require('socket.io')(app);
 var Moniker = require('moniker');
 var port = process.env.PORT || 5000;
 app.listen(port);
