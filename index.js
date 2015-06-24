@@ -46,6 +46,7 @@ io.sockets.on('connection', function (socket) {
     socket.on("get_name", function(data) {
         user.name = data.username;
         socket.emit("welcome",user);
+        updateUsers();
     });
 });
 
