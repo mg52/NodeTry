@@ -62,6 +62,7 @@
 
             but.onclick = function() {
                 socket.emit("get_name" , {username: document.getElementById("Name").value});
+            }
                 
             if(detectmob() == 0){
             progress.onclick = function() {
