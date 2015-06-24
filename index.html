@@ -33,6 +33,7 @@
 
         window.onload = function() {
             var welcome = document.getElementById("welcome");
+            var other_users = document.getElementById("other_users");
             var click = document.getElementById("click");
             var progress = document.getElementById("progress");
             var results = document.getElementById("results");
@@ -43,6 +44,9 @@
             socket.on('welcome', function (data) {
                 welcome.innerHTML = "Welcome to the game <strong>" + data.name + "</strong>";
                 click.innerHTML = "Number of your Clicks: 0";
+            });
+            socket.on('other', function (data) {
+                other_users.innerHTML = "Other Users: <strong>" + data.name + "</strong>";
             });
             socket.on('update', function (data) {
                 progress.innerHTML = data.currentWidth;
@@ -70,6 +74,8 @@
 </head>
 <body>
 <div id="welcome"></div>
+<hr />
+<div id="other_users"></div>
 <hr />
 <div id="count">Number of Players: </div>
 <hr />
