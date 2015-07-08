@@ -1,4 +1,4 @@
-/*
+
 var handler = function(req, res) {
     fs.readFile('./index.html', function (err, data) {
         if(err) throw err;
@@ -12,10 +12,10 @@ var fs = require('fs');
 var Moniker = require('moniker');
 var port = process.env.PORT || 5000;
 app.listen(port);
-*/
+
 
 /*Server Creation with Express*/
-
+/*
 var Moniker = require('moniker');
 var port = process.env.PORT || 5000;
 var app = require('express')();
@@ -25,7 +25,7 @@ server.listen(port);
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
 });
-
+*/
 /*End of Server Creation with Express*/
 
 console.log('Working!');
